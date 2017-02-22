@@ -1,12 +1,13 @@
-package com.websystique.springboot.service;
+package br.com.erudio.service;
 
 import java.util.List;
 
-import com.websystique.springboot.model.User;
-import com.websystique.springboot.repositories.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+
+import br.com.erudio.model.User;
+import br.com.erudio.repositories.UserRepository;
 
 
 

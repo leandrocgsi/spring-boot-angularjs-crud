@@ -1,4 +1,4 @@
-package com.websystique.springboot.model;
+package br.com.erudio.model;
 
 import org.hibernate.validator.constraints.NotEmpty;
 

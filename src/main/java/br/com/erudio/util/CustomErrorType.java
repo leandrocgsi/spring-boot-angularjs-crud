@@ -1,4 +1,4 @@
-package com.websystique.springboot.util;
+package br.com.erudio.util;
 
 
 public class CustomErrorType {

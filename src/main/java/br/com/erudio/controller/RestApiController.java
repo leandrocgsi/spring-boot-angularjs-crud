@@ -1,4 +1,4 @@
-package com.websystique.springboot.controller;
+package br.com.erudio.controller;
 
 import java.util.List;
 
@@ -15,9 +15,9 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.util.UriComponentsBuilder;
 
-import com.websystique.springboot.model.User;
-import com.websystique.springboot.service.UserService;
-import com.websystique.springboot.util.CustomErrorType;
+import br.com.erudio.model.User;
+import br.com.erudio.service.UserService;
+import br.com.erudio.util.CustomErrorType;
 
 @RestController
 @RequestMapping("/api")

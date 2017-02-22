@@ -1,9 +1,9 @@
-package com.websystique.springboot.service;
+package br.com.erudio.service;
 
-
-import com.websystique.springboot.model.User;
 
 import java.util.List;
+
+import br.com.erudio.model.User;
 
 public interface UserService {
 	
