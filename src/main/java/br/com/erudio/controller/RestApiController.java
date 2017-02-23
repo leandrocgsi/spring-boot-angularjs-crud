@@ -33,12 +33,6 @@ public class RestApiController {
 	@RequestMapping(value = "/user/", method = RequestMethod.GET)
 	public ResponseEntity<List<User>> listAllUsers() {
 		List<User> users = userService.findAllUsers();
-		/*User user = new User();
-		user.setAge(32);
-		user.setId(12L);
-		user.setName("Leandro Costa");
-		user.setSalary(4800);
-        users.add(user);*/
 		if (users.isEmpty()) {
 			return new ResponseEntity(HttpStatus.NO_CONTENT);
 			// You many decide to return HttpStatus.NOT_FOUND
