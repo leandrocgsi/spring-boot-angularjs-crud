@@ -94,8 +94,6 @@ public class RestApiController {
         return new ResponseEntity<User>(currentUser, HttpStatus.OK);
     }
 
-    // ------------------- Delete a User-----------------------------------------
-
     @RequestMapping(value = "/user/{id}", method = RequestMethod.DELETE)
     public ResponseEntity<?> deleteUser(@PathVariable("id") long id) {
         logger.info("Fetching & Deleting User with id {}", id);
@@ -103,14 +101,11 @@ public class RestApiController {
         User user = userService.findById(id);
         if (user == null) {
             logger.error("Unable to delete. User with id {} not found.", id);
-            return new ResponseEntity(new CustomErrorType("Unable to delete. User with id " + id + " not found."),
-                    HttpStatus.NOT_FOUND);
+            return new ResponseEntity(new CustomErrorType("Unable to delete. User with id " + id + " not found."), HttpStatus.NOT_FOUND);
         }
         userService.deleteUserById(id);
         return new ResponseEntity<User>(HttpStatus.NO_CONTENT);
     }
-
-    // ------------------- Delete All Users-----------------------------
 
     @RequestMapping(value = "/user/", method = RequestMethod.DELETE)
     public ResponseEntity<User> deleteAllUsers() {
