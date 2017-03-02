@@ -28,8 +28,6 @@ public class RestApiController {
     @Autowired
     UserService userService; //Service which will do all data retrieval/manipulation work
 
-    // -------------------Retrieve All Users---------------------------------------------
-
     @RequestMapping(value = "/user/", method = RequestMethod.GET)
     public ResponseEntity<List<User>> listAllUsers() {
         List<User> users = userService.findAllUsers();
@@ -39,8 +37,6 @@ public class RestApiController {
         }
         return new ResponseEntity<List<User>>(users, HttpStatus.OK);
     }
-
-    // -------------------Retrieve Single User------------------------------------------
 
     @RequestMapping(value = "/user/{id}", method = RequestMethod.GET)
     public ResponseEntity<?> getUser(@PathVariable("id") long id) {
@@ -53,8 +49,6 @@ public class RestApiController {
         }
         return new ResponseEntity<User>(user, HttpStatus.OK);
     }
-
-    // -------------------Create a User-------------------------------------------
 
     @RequestMapping(value = "/user/", method = RequestMethod.POST)
     public ResponseEntity<?> createUser(@RequestBody User user, UriComponentsBuilder ucBuilder) {
@@ -71,8 +65,6 @@ public class RestApiController {
         headers.setLocation(ucBuilder.path("/api/user/{id}").buildAndExpand(user.getId()).toUri());
         return new ResponseEntity<String>(headers, HttpStatus.CREATED);
     }
-
-    // ------------------- Update a User ------------------------------------------------
 
     @RequestMapping(value = "/user/{id}", method = RequestMethod.PUT)
     public ResponseEntity<?> updateUser(@PathVariable("id") long id, @RequestBody User user) {
