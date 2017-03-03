@@ -26,7 +26,7 @@ public class RestApiController {
     public static final Logger logger = LoggerFactory.getLogger(RestApiController.class);
 
     @Autowired
-    UserService userService; //Service which will do all data retrieval/manipulation work
+    UserService userService;
 
     @RequestMapping(value = "/user/", method = RequestMethod.GET)
     public ResponseEntity<List<User>> listAllUsers() {
