@@ -6,20 +6,20 @@ import java.util.List;
 import br.com.erudio.model.User;
 
 public interface UserService {
-	
-	User findById(Long id);
+    
+    User findById(Long id);
 
-	User findByName(String name);
+    User findByName(String name);
 
-	void saveUser(User user);
+    void saveUser(User user);
 
-	void updateUser(User user);
+    void updateUser(User user);
 
-	void deleteUserById(Long id);
+    void deleteUserById(Long id);
 
-	void deleteAllUsers();
+    void deleteAllUsers();
 
-	List<User> findAllUsers();
+    List<User> findAllUsers();
 
-	boolean isUserExist(User user);
+    boolean isUserExist(User user);
 }
