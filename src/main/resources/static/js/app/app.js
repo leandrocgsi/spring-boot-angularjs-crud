@@ -22,6 +22,20 @@ app.config(['$stateProvider', '$urlRouterProvider',
                         return deferred.promise;
                     }
                 }
+            })
+            .state('course', {
+                url: '/course',
+                templateUrl: 'partials/list',
+                controller:'UserController',
+                controllerAs:'ctrl',
+                resolve: {
+                    users: function ($q, UserService) {
+                        console.log('Load all users');
+                        var deferred = $q.defer();
+                        UserService.loadAllUsers().then(deferred.resolve, deferred.resolve);
+                        return deferred.promise;
+                    }
+                }
             });
         $urlRouterProvider.otherwise('/');
     }]);
