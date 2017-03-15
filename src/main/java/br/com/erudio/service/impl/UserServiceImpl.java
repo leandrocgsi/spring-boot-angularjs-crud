@@ -1,4 +1,4 @@
-package br.com.erudio.service;
+package br.com.erudio.service.impl;
 
 import java.util.List;
 
@@ -8,6 +8,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import br.com.erudio.model.User;
 import br.com.erudio.repositories.UserRepository;
+import br.com.erudio.service.UserService;
 
 
 
