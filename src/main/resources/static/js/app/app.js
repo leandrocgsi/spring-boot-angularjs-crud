@@ -2,7 +2,9 @@ var app = angular.module('crudApp',['ui.router','ngStorage']);
 
 app.constant('urls', {
     BASE: 'http://localhost:8080/',
-    USER_SERVICE_API : 'http://localhost:8080/api/user/'
+    USER_SERVICE_API : 'http://localhost:8080/api/user/',
+    COURSE_SERVICE_API : 'http://localhost:8080/api/course/',
+    STUDENT_SERVICE_API : 'http://localhost:8080/api/student/'
 });
 
 app.config(['$stateProvider', '$urlRouterProvider',
