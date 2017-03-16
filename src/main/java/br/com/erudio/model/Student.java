@@ -15,7 +15,7 @@ import javax.persistence.Table;
 import org.hibernate.validator.constraints.NotEmpty;
 
 @Entity
-@Table(name="TBL_CURSO")
+@Table(name="TBL_ALUNO")
 public class Student implements Serializable{
 
     private static final long serialVersionUID = 1L;

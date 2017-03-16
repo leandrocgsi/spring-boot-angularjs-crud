@@ -2,7 +2,6 @@
 
 angular.module('crudApp').controller('CourseController',
     ['CourseService', '$scope',  function( CourseService, $scope) {
-
         var self = this;
         self.course = {};
         self.courses=[];
@@ -23,31 +22,31 @@ angular.module('crudApp').controller('CourseController',
         self.onlyNumbers = /^\d+([,.]\d+)?$/;
 
         function submit() {
-            console.log('Submitting');
+            console.log('Submetendo');
             if (self.course.id === undefined || self.course.id === null) {
-                console.log('Saving New Course', self.course);
+                console.log('Salvando Um Novo Curso', self.course);
                 createCourse(self.course);
             } else {
                 updateCourse(self.course, self.course.id);
-                console.log('Course updated with id ', self.course.id);
+                console.log('Atualizando o curso com o id ', self.course.id);
             }
         }
 
         function createCourse(course) {
-            console.log('About to create course');
+            console.log('Criação de Cursos');
             CourseService.createCourse(course)
                 .then(
                     function (response) {
-                        console.log('Course created successfully');
-                        self.successMessage = 'Course created successfully';
+                        console.log('Curso criado com sucesso');
+                        self.successMessage = 'Curso criado com sucesso';
                         self.errorMessage='';
                         self.done = true;
                         self.course={};
                         $scope.myForm.$setPristine();
                     },
                     function (errResponse) {
-                        console.error('Error while creating Course');
-                        self.errorMessage = 'Error while creating Course: ' + errResponse.data.errorMessage;
+                        console.error('Erro ao criar Curso');
+                        self.errorMessage = 'Erro ao criar Curso: ' + errResponse.data.errorMessage;
                         self.successMessage='';
                     }
                 );
@@ -55,19 +54,19 @@ angular.module('crudApp').controller('CourseController',
 
 
         function updateCourse(course, id){
-            console.log('About to update course');
+            console.log('Atualização de Cursos');
             CourseService.updateCourse(course, id)
                 .then(
                     function (response){
-                        console.log('Course updated successfully');
-                        self.successMessage='Course updated successfully';
+                        console.log('Curso atualizado com sucesso');
+                        self.successMessage='Curso atualizado com sucesso';
                         self.errorMessage='';
                         self.done = true;
                         $scope.myForm.$setPristine();
                     },
                     function(errResponse){
-                        console.error('Error while updating Course');
-                        self.errorMessage='Error while updating Course '+errResponse.data;
+                        console.error('Erro ao atualizar o curso');
+                        self.errorMessage='Erro ao atualizar o curso '+errResponse.data;
                         self.successMessage='';
                     }
                 );
@@ -79,10 +78,10 @@ angular.module('crudApp').controller('CourseController',
             CourseService.removeCourse(id)
                 .then(
                     function(){
-                        console.log('Course '+id + ' removed successfully');
+                        console.log('Curso de id '+id + ' removido com sucesso');
                     },
                     function(errResponse){
-                        console.error('Error while removing course '+id +', Error :'+errResponse.data);
+                        console.error('Erro ao remover o curso '+id +', Error :'+errResponse.data);
                     }
                 );
         }
@@ -100,7 +99,7 @@ angular.module('crudApp').controller('CourseController',
                     self.course = course;
                 },
                 function (errResponse) {
-                    console.error('Error while removing course ' + id + ', Error :' + errResponse.data);
+                    console.error('Erro ao remover o curso ' + id + ', Error :' + errResponse.data);
                 }
             );
         }

@@ -21,9 +21,9 @@ import br.com.erudio.util.CustomErrorType;
 
 @RestController
 @RequestMapping("/api")
-public class RestApiController {
+public class UserController {
 
-    public static final Logger logger = LoggerFactory.getLogger(RestApiController.class);
+    public static final Logger logger = LoggerFactory.getLogger(UserController.class);
 
     @Autowired
     UserService userService;

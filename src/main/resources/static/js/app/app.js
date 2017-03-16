@@ -10,23 +10,12 @@ app.constant('urls', {
 app.config(['$stateProvider', '$urlRouterProvider',
     function($stateProvider, $urlRouterProvider) {
 
-	    $stateProvider
-		    .state('course', {
-		        url: '/course',
-		        templateUrl: 'partials/courses',
-		        controller:'CourseController',
-		        controllerAs:'courseCtrl',
-		        resolve: {
-		            courses: function ($q, CoursesService) {
-		                console.log('Load all courses');
-		                var deferred = $q.defer();
-		                CourseService.loadAllCourses().then(deferred.resolve, deferred.resolve);
-		                return deferred.promise;
-		            }
-		        }
-		    })
-		    .state('home', {
-		        url: '/',
+		$urlRouterProvider.otherwise('/home');
+	    
+		$stateProvider
+		
+			.state('home', {
+				url: '/',
 		        templateUrl: 'partials/list',
 		        controller:'UserController',
 		        controllerAs:'ctrl',
@@ -38,8 +27,35 @@ app.config(['$stateProvider', '$urlRouterProvider',
 		                return deferred.promise;
 		            }
 		        }
-		    })
+			})
+	        .state('list', {
+	        	url: '/list',
+		        templateUrl: 'partials/list',
+		        controller:'UserController',
+		        controllerAs:'ctrl',
+		        resolve: {
+		            users: function ($q, UserService) {
+		                console.log('Load all users');
+		                var deferred = $q.defer();
+		                UserService.loadAllUsers().then(deferred.resolve, deferred.resolve);
+		                return deferred.promise;
+		            }
+		        }
+	        })
+	        .state('course', {
+	            url: '/course',
+	            templateUrl: 'partials/courses',
+		        controller:'CourseController',
+		        controllerAs:'courseCtrl'/*,
+		        resolve: {
+		            courses: function ($q, CoursesService) {
+		                console.log('Load all courses');
+		                var deferred = $q.defer();
+		                CourseService.loadAllCourses().then(deferred.resolve, deferred.resolve);
+		                return deferred.promise;
+		            }
+		        }*/
+	        });
 		    ;
-        $urlRouterProvider.otherwise('/');
     }]);
 
