@@ -1,104 +1,104 @@
 'use strict';
 
-angular.module('crudApp').factory('UserService',
+angular.module('crudApp').factory('StudentService',
     ['$localStorage', '$http', '$q', 'urls',
         function ($localStorage, $http, $q, urls) {
 
             var factory = {
-                loadAllUsers: loadAllUsers,
-                getAllUsers: getAllUsers,
-                getUser: getUser,
-                createUser: createUser,
-                updateUser: updateUser,
-                removeUser: removeUser
+                loadAllStudents: loadAllStudents,
+                getAllStudents: getAllStudents,
+                getStudent: getStudent,
+                createStudent: createStudent,
+                updateStudent: updateStudent,
+                removeStudent: removeStudent
             };
 
             return factory;
 
-            function loadAllUsers() {
-                console.log('Fetching all users');
+            function loadAllStudents() {
+                console.log('Buscando todos os alunos');
                 var deferred = $q.defer();
-                $http.get(urls.USER_SERVICE_API)
+                $http.get(urls.STUDENT_SERVICE_API)
                     .then(
                         function (response) {
-                            console.log('Fetched successfully all users');
-                            $localStorage.users = response.data;
+                            console.log('Alunos recuperados com sucesso');
+                            $localStorage.students = response.data;
                             deferred.resolve(response);
                         },
                         function (errResponse) {
-                            console.error('Error while loading users');
+                            console.error('Erro ao recuperar os alunos');
                             deferred.reject(errResponse);
                         }
                     );
                 return deferred.promise;
             }
 
-            function getAllUsers(){
-                return $localStorage.users;
+            function getAllStudents(){
+                return $localStorage.students;
             }
 
-            function getUser(id) {
-                console.log('Fetching User with id :'+id);
+            function getStudent(id) {
+                console.log('Recuperando as informações do Aluno com o id :'+id);
                 var deferred = $q.defer();
-                $http.get(urls.USER_SERVICE_API + id)
+                $http.get(urls.STUDENT_SERVICE_API + id)
                     .then(
                         function (response) {
-                            console.log('Fetched successfully User with id :'+id);
+                            console.log('Recuperando as informações do Aluno com o id :'+id);
                             deferred.resolve(response.data);
                         },
                         function (errResponse) {
-                            console.error('Error while loading user with id :'+id);
+                            console.error('Erro ao ler as informações do Aluno com o id  :'+id);
                             deferred.reject(errResponse);
                         }
                     );
                 return deferred.promise;
             }
 
-            function createUser(user) {
-                console.log('Creating User');
+            function createStudent(student) {
+                console.log('Creating Student');
                 var deferred = $q.defer();
-                $http.post(urls.USER_SERVICE_API, user)
+                $http.post(urls.STUDENT_SERVICE_API, student)
                     .then(
                         function (response) {
-                            loadAllUsers();
+                            loadAllStudents();
                             deferred.resolve(response.data);
                         },
                         function (errResponse) {
-                           console.error('Error while creating User : '+errResponse.data.errorMessage);
+                           console.error('Erro ao criuar o aluno : '+errResponse.data.errorMessage);
                            deferred.reject(errResponse);
                         }
                     );
                 return deferred.promise;
             }
 
-            function updateUser(user, id) {
-                console.log('Updating User with id '+id);
+            function updateStudent(student, id) {
+                console.log('Updating Student with id '+id);
                 var deferred = $q.defer();
-                $http.put(urls.USER_SERVICE_API + id, user)
+                $http.put(urls.STUDENT_SERVICE_API + id, student)
                     .then(
                         function (response) {
-                            loadAllUsers();
+                            loadAllStudents();
                             deferred.resolve(response.data);
                         },
                         function (errResponse) {
-                            console.error('Error while updating User with id :'+id);
+                            console.error('Erro ao atualizar o aluno com o id  :'+id);
                             deferred.reject(errResponse);
                         }
                     );
                 return deferred.promise;
             }
 
-            function removeUser(id) {
-                console.log('Removing User with id '+id);
+            function removeStudent(id) {
+                console.log('Removendo o Aluno com o id '+id);
                 var deferred = $q.defer();
-                $http.delete(urls.USER_SERVICE_API + id)
+                $http.delete(urls.STUDENT_SERVICE_API + id)
                     .then(
                         function (response) {
-                            loadAllUsers();
+                            loadAllStudents();
                             deferred.resolve(response.data);
                         },
                         function (errResponse) {
-                            console.error('Error while removing User with id :'+id);
+                            console.error('Erro ao remover o aluno com o id :'+id);
                             deferred.reject(errResponse);
                         }
                     );

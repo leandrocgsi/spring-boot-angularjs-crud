@@ -16,17 +16,17 @@ angular.module('crudApp').factory('CourseService',
             return factory;
 
             function loadAllCourses() {
-                console.log('Fetching all courses');
+                console.log('Buscando todos os cursos');
                 var deferred = $q.defer();
                 $http.get(urls.COURSE_SERVICE_API)
                     .then(
                         function (response) {
-                            console.log('Fetched successfully all courses');
+                            console.log('Todos os cursos recuperados com sucesso');
                             $localStorage.courses = response.data;
                             deferred.resolve(response);
                         },
                         function (errResponse) {
-                            console.error('Error while loading courses');
+                            console.error('Erro ao recuperar os cursos');
                             deferred.reject(errResponse);
                         }
                     );
@@ -38,16 +38,16 @@ angular.module('crudApp').factory('CourseService',
             }
 
             function getCourse(id) {
-                console.log('Fetching Course with id :'+id);
+                console.log('Recuperando as informações do curso de id :'+id);
                 var deferred = $q.defer();
                 $http.get(urls.COURSE_SERVICE_API + id)
                     .then(
                         function (response) {
-                            console.log('Fetched successfully Course with id :'+id);
+                            console.log('Informações do curso de id :'+id+ ' recuperadas com sucesso');
                             deferred.resolve(response.data);
                         },
                         function (errResponse) {
-                            console.error('Error while loading course with id :'+id);
+                            console.error('Erro ao recuperar as informações do curso de id :'+id);
                             deferred.reject(errResponse);
                         }
                     );
@@ -55,7 +55,7 @@ angular.module('crudApp').factory('CourseService',
             }
 
             function createCourse(course) {
-                console.log('Creating Course');
+                console.log('Criando um novo curso');
                 var deferred = $q.defer();
                 $http.post(urls.COURSE_SERVICE_API, course)
                     .then(
@@ -64,7 +64,7 @@ angular.module('crudApp').factory('CourseService',
                             deferred.resolve(response.data);
                         },
                         function (errResponse) {
-                           console.error('Error while creating Course : '+errResponse.data.errorMessage);
+                           console.error('Erro ao criar um novo curso : '+errResponse.data.errorMessage);
                            deferred.reject(errResponse);
                         }
                     );
@@ -72,7 +72,7 @@ angular.module('crudApp').factory('CourseService',
             }
 
             function updateCourse(course, id) {
-                console.log('Updating Course with id '+id);
+                console.log('Atualizando o curso de id '+id);
                 var deferred = $q.defer();
                 $http.put(urls.COURSE_SERVICE_API + id, course)
                     .then(
@@ -81,7 +81,7 @@ angular.module('crudApp').factory('CourseService',
                             deferred.resolve(response.data);
                         },
                         function (errResponse) {
-                            console.error('Error while updating Course with id :'+id);
+                            console.error('Erro ao atualizar o curso de id :'+id);
                             deferred.reject(errResponse);
                         }
                     );
@@ -89,7 +89,7 @@ angular.module('crudApp').factory('CourseService',
             }
 
             function removeCourse(id) {
-                console.log('Removing Course with id '+id);
+                console.log('Removendo o curso de id '+id);
                 var deferred = $q.defer();
                 $http.delete(urls.COURSE_SERVICE_API + id)
                     .then(
@@ -98,7 +98,7 @@ angular.module('crudApp').factory('CourseService',
                             deferred.resolve(response.data);
                         },
                         function (errResponse) {
-                            console.error('Error while removing Course with id :'+id);
+                            console.error('Erro ao remover o curso de id :'+id);
                             deferred.reject(errResponse);
                         }
                     );

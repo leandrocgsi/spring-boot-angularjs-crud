@@ -74,14 +74,14 @@ angular.module('crudApp').controller('CourseController',
 
 
         function removeCourse(id){
-            console.log('About to remove Course with id '+id);
+            console.log('Remoção do curso com o id '+id);
             CourseService.removeCourse(id)
                 .then(
                     function(){
                         console.log('Curso de id '+id + ' removido com sucesso');
                     },
                     function(errResponse){
-                        console.error('Erro ao remover o curso '+id +', Error :'+errResponse.data);
+                        console.error('Erro ao remover o curso '+id +', Erro :'+errResponse.data);
                     }
                 );
         }
@@ -110,6 +110,4 @@ angular.module('crudApp').controller('CourseController',
             $scope.myForm.$setPristine(); //reset Form
         }
     }
-
-
-    ]);
+]);
