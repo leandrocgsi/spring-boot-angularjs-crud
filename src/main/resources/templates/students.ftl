@@ -8,20 +8,30 @@
 	            <div class="alert alert-danger" role="alert" ng-if="studentCtrl.errorMessage">{{studentCtrl.errorMessage}}</div>
 	            <form ng-submit="studentCtrl.submit()" name="myForm" class="form-horizontal">
 	                <input type="hidden" ng-model="studentCtrl.student.id" />
+
+	                <div class="row">
+	                    <div class="form-group col-md-12">
+	                        <label class="col-md-2 control-lable" for="age">CPF</label>
+	                        <div class="col-md-7">
+	                            <input type="text" ng-model="studentCtrl.student.age" id="age" class="form-control input-sm" placeholder="Digite o CPF do aluno" required ng-pattern="studentCtrl.onlyIntegers"/>
+	                        </div>
+	                    </div>
+	                </div>
+	                
+	                <div class="row">
+	                    <div class="form-group col-md-12">
+	                        <label class="col-md-2 control-lable" for="uname">N° de Matrícula</label>
+	                        <div class="col-md-7">
+	                            <input type="text" ng-model="studentCtrl.student.name" id="uname" class="studentname form-control input-sm" placeholder="Digite o N° de Matrícula" required ng-minlength="3"/>
+	                        </div>
+	                    </div>
+	                </div>
+	                
 	                <div class="row">
 	                    <div class="form-group col-md-12">
 	                        <label class="col-md-2 control-lable" for="uname">Nome</label>
 	                        <div class="col-md-7">
-	                            <input type="text" ng-model="studentCtrl.student.name" id="uname" class="studentname form-control input-sm" placeholder="Enter your name" required ng-minlength="3"/>
-	                        </div>
-	                    </div>
-	                </div>
-
-	                <div class="row">
-	                    <div class="form-group col-md-12">
-	                        <label class="col-md-2 control-lable" for="age">Age</label>
-	                        <div class="col-md-7">
-	                            <input type="text" ng-model="studentCtrl.student.age" id="age" class="form-control input-sm" placeholder="Enter your Age." required ng-pattern="studentCtrl.onlyIntegers"/>
+	                            <input type="text" ng-model="studentCtrl.student.name" id="uname" class="studentname form-control input-sm" placeholder="Digite o Nome" required ng-minlength="3"/>
 	                        </div>
 	                    </div>
 	                </div>
@@ -53,20 +63,20 @@
 		        <table class="table table-hover">
 		            <thead>
 		            <tr>
-		                <th>ID</th>
-		                <th>NAME</th>
-		                <th>AGE</th>
-		                <th>SALARY</th>
+		                <th>CPF</th>
+		                <th>N° de Matrícula</th>
+		                <th>Nome</th>
+		                <th>Curso</th>
 		                <th width="100"></th>
 		                <th width="100"></th>
 		            </tr>
 		            </thead>
 		            <tbody>
 		            <tr ng-repeat="u in studentCtrl.getAllStudents()">
-		                <td>{{u.id}}</td>
+		                <td>{{u.id.id}}</td>
+		                <td>{{u.id.registration}}</td>
 		                <td>{{u.name}}</td>
-		                <td>{{u.age}}</td>
-		                <td>{{u.salary}}</td>
+		                <td>{{u.course.name}}</td>
 		                <td><button type="button" ng-click="studentCtrl.editStudent(u.id)" class="btn btn-success custom-width">Edit</button></td>
 		                <td><button type="button" ng-click="studentCtrl.removeStudent(u.id)" class="btn btn-danger custom-width">Remove</button></td>
 		            </tr>

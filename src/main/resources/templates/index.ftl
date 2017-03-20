@@ -14,9 +14,9 @@
         <script src="js/lib/localforage.min.js" ></script>
         <script src="js/lib/ngStorage.min.js"></script>
         <script src="js/app/app.js"></script>
-        <script src="js/app/UserService.js"></script>
+        <script src="js/app/StudentService.js"></script>
         <script src="js/app/CourseService.js"></script>
-        <script src="js/app/UserController.js"></script>
+        <script src="js/app/StudentController.js"></script>
         <script src="js/app/CourseController.js"></script>
     </body>
 </html>
