@@ -47,8 +47,8 @@
 
 	                <div class="row">
 	                    <div class="form-actions floatRight">
-	                        <input type="submit"  value="{{!studentCtrl.student.id ? 'Add' : 'Update'}}" class="btn btn-primary btn-sm" ng-disabled="myForm.$invalid || myForm.$pristine">
-	                        <button type="button" ng-click="studentCtrl.reset()" class="btn btn-warning btn-sm" ng-disabled="myForm.$pristine">Reset Form</button>
+	                        <input type="submit"  value="{{!studentCtrl.student.id ? 'Adicionar' : 'Atualizar'}}" class="btn btn-primary btn-sm" ng-disabled="myForm.$invalid || myForm.$pristine">
+	                        <button type="button" ng-click="studentCtrl.reset()" class="btn btn-warning btn-sm" ng-disabled="myForm.$pristine">Limpar</button>
 	                    </div>
 	                </div>
 	            </form>
@@ -77,8 +77,8 @@
 		                <td>{{u.id.registration}}</td>
 		                <td>{{u.name}}</td>
 		                <td>{{u.course.name}}</td>
-		                <td><button type="button" ng-click="studentCtrl.editStudent(u.id)" class="btn btn-success custom-width">Edit</button></td>
-		                <td><button type="button" ng-click="studentCtrl.removeStudent(u.id)" class="btn btn-danger custom-width">Remove</button></td>
+		                <td><button type="button" ng-click="studentCtrl.editStudent(u.id)" class="btn btn-success custom-width">Editar</button></td>
+		                <td><button type="button" ng-click="studentCtrl.removeStudent(u.id)" class="btn btn-danger custom-width">Remover</button></td>
 		            </tr>
 		            </tbody>
 		        </table>		
