@@ -13,7 +13,7 @@
 	                    <div class="form-group col-md-12">
 	                        <label class="col-md-2 control-lable" for="age">CPF</label>
 	                        <div class="col-md-7">
-	                            <input type="text" ng-model="studentCtrl.student.age" id="age" class="form-control input-sm" placeholder="Digite o CPF do aluno" required ng-pattern="studentCtrl.onlyIntegers"/>
+	                            <input type="text" ng-model="studentCtrl.student.id.id" id="cpf" class="form-control input-sm" placeholder="Digite o CPF do aluno" required ng-pattern="studentCtrl.onlyIntegers"/>
 	                        </div>
 	                    </div>
 	                </div>
@@ -22,7 +22,7 @@
 	                    <div class="form-group col-md-12">
 	                        <label class="col-md-2 control-lable" for="uname">N° de Matrícula</label>
 	                        <div class="col-md-7">
-	                            <input type="text" ng-model="studentCtrl.student.name" id="uname" class="studentname form-control input-sm" placeholder="Digite o N° de Matrícula" required ng-minlength="3"/>
+	                            <input type="text" ng-model="studentCtrl.student.id.registration" id="registration" class="studentname form-control input-sm" placeholder="Digite o N° de Matrícula" required ng-minlength="3"/>
 	                        </div>
 	                    </div>
 	                </div>
@@ -40,14 +40,14 @@
 	                    <div class="form-group col-md-12">
 	                        <label class="col-md-2 control-lable" for="salary">Salary</label>
 	                        <div class="col-md-7">
-	                            <input type="text" ng-model="studentCtrl.student.salary" id="salary" class="form-control input-sm" placeholder="Enter your Salary." required ng-pattern="studentCtrl.onlyNumbers"/>
+	                            <input type="text" ng-model="studentCtrl.student.curso" id="salary" class="form-control input-sm" placeholder="Enter your Salary." required ng-pattern="studentCtrl.onlyNumbers"/>
 	                        </div>
 	                    </div>
 	                </div>
 
 	                <div class="row">
 	                    <div class="form-actions floatRight">
-	                        <input type="submit"  value="{{!studentCtrl.student.id ? 'Adicionar' : 'Atualizar'}}" class="btn btn-primary btn-sm" ng-disabled="myForm.$invalid || myForm.$pristine">
+	                        <input type="submit"  value="{{!studentCtrl.student.id ? 'Adicionar'}}" class="btn btn-primary btn-sm" ng-disabled="myForm.$invalid || myForm.$pristine">
 	                        <button type="button" ng-click="studentCtrl.reset()" class="btn btn-warning btn-sm" ng-disabled="myForm.$pristine">Limpar</button>
 	                    </div>
 	                </div>
