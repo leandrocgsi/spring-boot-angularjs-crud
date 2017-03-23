@@ -38,16 +38,18 @@
 	
 	                <div class="row">
 	                    <div class="form-group col-md-12">
-	                        <label class="col-md-2 control-lable" for="salary">Salary</label>
-	                        <div class="col-md-7">
-	                            <input type="text" ng-model="studentCtrl.student.curso" id="salary" class="form-control input-sm" placeholder="Enter your Salary." required ng-pattern="studentCtrl.onlyNumbers"/>
-	                        </div>
+	                        
+	                      <label for="gender" class="col-md-3 blue bolder control-label obrigatorio">Curso</label>
+	                      <select name="select" ng-model="studentCtrl.student.curso">
+	                          <option ng-repeat="u in courseCtrl.getAllCourses()" value="{{u}}">{{u.name}}</option>
+	                      </select>
 	                    </div>
 	                </div>
 
 	                <div class="row">
 	                    <div class="form-actions floatRight">
-	                        <input type="submit"  value="'Adicionar'" class="btn btn-primary btn-sm" ng-disabled="myForm.$invalid || myForm.$pristine">
+	                        <input type="submit"  value="{{!courseCtrl.student ? 'Salvar' : 'Salvar'}}" class="btn btn-primary btn-sm" ng-disabled="myForm.$invalid || myForm.$pristine">
+	                        
 	                        <button type="button" ng-click="studentCtrl.reset()" class="btn btn-warning btn-sm" ng-disabled="myForm.$pristine">Limpar</button>
 	                    </div>
 	                </div>

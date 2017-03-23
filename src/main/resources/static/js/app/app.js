@@ -38,6 +38,12 @@ app.config(['$stateProvider', '$urlRouterProvider',
                         var deferred = $q.defer();
                         StudentService.loadAllStudents().then(deferred.resolve, deferred.resolve);
                         return deferred.promise;
+                    },
+                    courses: function ($q, CourseService) {
+                        console.log('Listando os cursos');
+                        var deferred = $q.defer();
+                        CourseService.loadAllCourses().then(deferred.resolve, deferred.resolve);
+                        return deferred.promise;
                     }
                 }
             })

@@ -1,11 +1,12 @@
 'use strict';
 
 angular.module('crudApp').controller('StudentController',
-    ['StudentService', '$scope',  function( StudentService, $scope) {
+    ['StudentService', 'CourseService', '$scope',  function( StudentService, CourseService, $scope) {
 
         var self = this;
         self.student = {};
         self.students=[];
+        self.courses=[];
 
         self.submit = submit;
         self.getAllStudents = getAllStudents;
@@ -109,6 +110,10 @@ angular.module('crudApp').controller('StudentController',
             self.errorMessage='';
             self.student={};
             $scope.myForm.$setPristine(); //reset Form
+        }
+        
+        function getAllCourses(){
+            return $localStorage.courses;
         }
     }
 ]);

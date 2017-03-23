@@ -4,10 +4,11 @@ package br.com.erudio.service;
 import java.util.List;
 
 import br.com.erudio.model.Student;
+import br.com.erudio.model.StudentId;
 
 public interface StudentService {
     
-    Student findById(Long id);
+    Student findById(StudentId id);
 
     Student findByName(String name);
 
@@ -15,7 +16,7 @@ public interface StudentService {
 
     void updateStudent(Student student);
 
-    void deleteStudentById(Long id);
+    void deleteStudentById(StudentId id);
 
     void deleteAllStudents();
 

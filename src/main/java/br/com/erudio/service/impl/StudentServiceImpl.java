@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import br.com.erudio.model.Student;
+import br.com.erudio.model.StudentId;
 import br.com.erudio.repositories.StudentRepository;
 import br.com.erudio.service.StudentService;
 
@@ -19,7 +20,7 @@ public class StudentServiceImpl implements StudentService{
     @Autowired
     private StudentRepository studentRepository;
 
-    public Student findById(Long id) {
+    public Student findById(StudentId id) {
         return studentRepository.findOne(id);
     }
 
@@ -35,7 +36,7 @@ public class StudentServiceImpl implements StudentService{
         saveStudent(student);
     }
 
-    public void deleteStudentById(Long id){
+    public void deleteStudentById(StudentId id){
         studentRepository.delete(id);
     }
 

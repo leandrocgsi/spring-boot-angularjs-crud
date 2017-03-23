@@ -16,10 +16,12 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.util.UriComponentsBuilder;
 
 import br.com.erudio.model.Student;
+import br.com.erudio.model.StudentId;
 import br.com.erudio.service.StudentService;
 import br.com.erudio.util.CustomErrorType;
 
 @RestController
+@SuppressWarnings("unchecked")
 @RequestMapping("/api")
 public class StudentController {
 
@@ -37,13 +39,16 @@ public class StudentController {
         return new ResponseEntity<List<Student>>(students, HttpStatus.OK);
     }
 
-    @RequestMapping(value = "/student/{id}", method = RequestMethod.GET)
-    public ResponseEntity<?> getStudent(@PathVariable("id") long id) {
-        logger.info("Fetching Student with id {}", id);
-        Student student = studentService.findById(id);
+    @RequestMapping(value = "/student/{id}/{registration}", method = RequestMethod.GET)
+    public ResponseEntity<?> getStudent(@PathVariable("id") Integer id, @PathVariable("registration") String registration) {
+        StudentId sdid = new StudentId();
+        sdid.setId(id);
+        sdid.setRegistration(registration);
+        logger.info("Fetching Student with id {}", sdid);
+        Student student = studentService.findById(sdid);
         if (student == null) {
-            logger.error("Student with id {} not found.", id);
-            return new ResponseEntity(new CustomErrorType("Student with id " + id  + " not found"), HttpStatus.NOT_FOUND);
+            logger.error("Student with id {} not found.", sdid);
+            return new ResponseEntity(new CustomErrorType("Student with id " + sdid  + " not found"), HttpStatus.NOT_FOUND);
         }
         return new ResponseEntity<Student>(student, HttpStatus.OK);
     }
@@ -64,15 +69,19 @@ public class StudentController {
         return new ResponseEntity<String>(headers, HttpStatus.CREATED);
     }
 
-    @RequestMapping(value = "/student/{id}", method = RequestMethod.PUT)
-    public ResponseEntity<?> updateStudent(@PathVariable("id") long id, @RequestBody Student student) {
-        logger.info("Updating Student with id {}", id);
+    @RequestMapping(value = "/student/{id}/{registration}", method = RequestMethod.PUT)
+    public ResponseEntity<?> updateStudent(@PathVariable("id") Integer id, @PathVariable("registration") String registration, @RequestBody Student student) {
+        StudentId sdid = new StudentId();
+        sdid.setId(id);
+        sdid.setRegistration(registration);
+        
+        logger.info("Updating Student with id {}", sdid);
 
-        Student currentStudent = studentService.findById(id);
+        Student currentStudent = studentService.findById(sdid);
 
         if (currentStudent == null) {
-            logger.error("Unable to update. Student with id {} not found.", id);
-            return new ResponseEntity(new CustomErrorType("Unable to upate. Student with id " + id + " not found."),
+            logger.error("Unable to update. Student with id {} not found.", sdid);
+            return new ResponseEntity(new CustomErrorType("Unable to upate. Student with id " + sdid + " not found."),
                     HttpStatus.NOT_FOUND);
         }
 
@@ -82,16 +91,20 @@ public class StudentController {
         return new ResponseEntity<Student>(currentStudent, HttpStatus.OK);
     }
 
-    @RequestMapping(value = "/student/{id}", method = RequestMethod.DELETE)
-    public ResponseEntity<?> deleteStudent(@PathVariable("id") long id) {
+    @RequestMapping(value = "/student/{id}/{registration}", method = RequestMethod.DELETE)
+    public ResponseEntity<?> deleteStudent(@PathVariable("id") Integer id, @PathVariable("registration") String registration) {
+        StudentId sdid = new StudentId();
+        sdid.setId(id);
+        sdid.setRegistration(registration);
+        
         logger.info("Fetching & Deleting Student with id {}", id);
 
-        Student student = studentService.findById(id);
+        Student student = studentService.findById(sdid);
         if (student == null) {
             logger.error("Unable to delete. Student with id {} not found.", id);
             return new ResponseEntity(new CustomErrorType("Unable to delete. Student with id " + id + " not found."), HttpStatus.NOT_FOUND);
         }
-        studentService.deleteStudentById(id);
+        studentService.deleteStudentById(sdid);
         return new ResponseEntity<Student>(HttpStatus.NO_CONTENT);
     }
 
