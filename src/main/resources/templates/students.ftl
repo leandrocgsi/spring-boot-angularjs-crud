@@ -41,7 +41,7 @@
 	                        
 	                      <label for="gender" class="col-md-3 blue bolder control-label obrigatorio">Curso</label>
 	                      <select name="select" ng-model="studentCtrl.student.curso">
-	                          <option ng-repeat="u in courseCtrl.getAllCourses()" value="{{u}}">{{u.name}}</option>
+	                          <option ng-repeat="u in courseCtrl.courses" value="{{u}}">{{u.name}}</option>
 	                      </select>
 	                    </div>
 	                </div>

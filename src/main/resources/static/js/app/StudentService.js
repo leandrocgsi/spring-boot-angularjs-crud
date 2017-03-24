@@ -40,7 +40,7 @@ angular.module('crudApp').factory('StudentService',
             function getStudent(id) {
                 console.log('Recuperando as informações do Aluno com o id :'+id);
                 var deferred = $q.defer();
-                $http.get(urls.STUDENT_SERVICE_API + id)
+                $http.get(urls.STUDENT_SERVICE_API + id.id + "/" +id.registration)
                     .then(
                         function (response) {
                             console.log('Recuperando as informações do Aluno com o id :'+id);
@@ -74,7 +74,7 @@ angular.module('crudApp').factory('StudentService',
             function updateStudent(student, id) {
                 console.log('Updating Student with id '+id);
                 var deferred = $q.defer();
-                $http.put(urls.STUDENT_SERVICE_API + id, student)
+                $http.put(urls.STUDENT_SERVICE_API + id.id + "/" +id.registration, student)
                     .then(
                         function (response) {
                             loadAllStudents();
@@ -91,7 +91,7 @@ angular.module('crudApp').factory('StudentService',
             function removeStudent(id) {
                 console.log('Removendo o Aluno com o id '+id);
                 var deferred = $q.defer();
-                $http.delete(urls.STUDENT_SERVICE_API + id)
+                $http.delete(urls.STUDENT_SERVICE_API + id.id + "/" +id.registration)
                     .then(
                         function (response) {
                             loadAllStudents();
