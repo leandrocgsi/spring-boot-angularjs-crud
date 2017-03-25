@@ -23,6 +23,10 @@ angular.module('crudApp').controller('StudentController',
 
         self.onlyIntegers = /^\d+$/;
         self.onlyNumbers = /^\d+([,.]\d+)?$/;
+        
+        self.filterCondition = {
+            u: {}
+        }
 
         function submit() {
             console.log('Submetendo');

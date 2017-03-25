@@ -40,13 +40,15 @@
 	                    <div class="form-group col-md-12">
 	                        
 	                      <label class="col-md-2 for="curso">Curso</label>
-	                      <select name="select" id="repeatSelect" ng-model="studentCtrl.student.curso">
-	                          <option ng-repeat="u in courses" value="{{u.id}}">{{u.name}}</option>
+	                      <select class="col-md-7"  style="studentname form-control input-sm ng-pristine ng-valid-minlength ng-not-empty ng-valid ng-valid-required ng-touched"   ng-model="studentCtrl.student.curso">
+	                          <option ng-selected="{{u.id == filterCondition.u.id}}" 
+	                              ng-repeat="u in studentCtrl.courses"
+	                              value="{{u.id}}">
+	                              {{u.name}}
+	                          </option>
 	                      </select>
 	                    </div>
 	                </div>
-	                
-courseCtrl.getAllCourses
 
 	                <div class="row">
 	                    <div class="form-actions floatRight">
