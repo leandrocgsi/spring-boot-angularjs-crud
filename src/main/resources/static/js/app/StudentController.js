@@ -6,10 +6,11 @@ angular.module('crudApp').controller('StudentController',
         var self = this;
         self.student = {};
         self.students=[];
-        self.courses=[];
+        self.courses= CourseService.getAllCourses();
 
         self.submit = submit;
         self.getAllStudents = getAllStudents;
+        self.getAllCourses = CourseService.getAllCourses();
         self.createStudent = createStudent;
         self.updateStudent = updateStudent;
         self.removeStudent = removeStudent;
@@ -113,7 +114,7 @@ angular.module('crudApp').controller('StudentController',
         }
         
         function getAllCourses(){
-            return $localStorage.courses;
+            return CourseService.getAllCourses();
         }
     }
 ]);

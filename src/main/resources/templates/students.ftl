@@ -39,12 +39,14 @@
 	                <div class="row">
 	                    <div class="form-group col-md-12">
 	                        
-	                      <label for="gender" class="col-md-3 blue bolder control-label obrigatorio">Curso</label>
-	                      <select name="select" ng-model="studentCtrl.student.curso">
-	                          <option ng-repeat="u in courseCtrl.courses" value="{{u}}">{{u.name}}</option>
+	                      <label class="col-md-2 for="curso">Curso</label>
+	                      <select name="select" id="repeatSelect" ng-model="studentCtrl.student.curso">
+	                          <option ng-repeat="u in courses" value="{{u.id}}">{{u.name}}</option>
 	                      </select>
 	                    </div>
 	                </div>
+	                
+courseCtrl.getAllCourses
 
 	                <div class="row">
 	                    <div class="form-actions floatRight">
