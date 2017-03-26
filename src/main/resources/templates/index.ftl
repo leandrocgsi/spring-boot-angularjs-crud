@@ -16,6 +16,7 @@
         <script src="js/app/app.js"></script>
         <script src="js/app/StudentService.js"></script>
         <script src="js/app/CourseService.js"></script>
+        <script src="js/app/HomeController.js"></script>
         <script src="js/app/StudentController.js"></script>
         <script src="js/app/CourseController.js"></script>
     </body>
