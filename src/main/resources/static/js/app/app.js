@@ -16,8 +16,8 @@ app.config(['$stateProvider', '$urlRouterProvider',
             .state('home', {
                 url: '/home',
                 templateUrl: 'partials/home',
-                controller:'UserController',
-                controllerAs:'ctrl'
+                controller:'HomeController',
+                controllerAs:'homeCtrl',
             })
             .state('student', {
                 url: '/student',
